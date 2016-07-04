@@ -5,11 +5,11 @@
 
 using namespace std;
 int count_polynomials(string);
-void print_header(ofstream&);
+void print_header();
 int main(int argc,char *argv[]) {
-    if(argc!=3) {
+    if(argc!=2) {
         cout<<"Please enter file as an input parameter containing polynomials. It is recommended that the full directory"
-                "+ filename + extension is entered and the output file name."<<endl;
+                "+ filename + extension"<<endl;
         exit(1);
     }
     string filename= argv[1];
@@ -36,30 +36,28 @@ int main(int argc,char *argv[]) {
     infile.close();
 
     //Printing polynomials
-    ofstream outfile (argv[2]);
-    print_header(outfile);
+    print_header();
     for (int i = 0; i < poly_count; ++i) {
-        outfile<<"Polynomial "<<(i+1)<<":"<<endl;
-        outfile<<polynomials[i];
-        outfile<<endl<<endl;
+        cout<<"Polynomial "<<(i+1)<<":"<<endl;
+        cout<<polynomials[i];
+        cout<<endl<<endl;
     }
 
     //Polynomial operations
     for (int j = 0; j < poly_count; j+=2) {
         //addition
-        outfile<<"Polynomial "<<(j+1)<<" + Polynomial "<<(j+2)<<":"<<endl;
-        outfile<<(polynomials[j]+polynomials[j+1]);
-        outfile<<endl<<endl;
+        cout<<"Polynomial "<<(j+1)<<" + Polynomial "<<(j+2)<<":"<<endl;
+        cout<<(polynomials[j]+polynomials[j+1]);
+        cout<<endl<<endl;
         //subtraction
-        outfile<<"Polynomial "<<(j+1)<<" - Polynomial "<<(j+2)<<":"<<endl;
-        outfile<<(polynomials[j]-polynomials[j+1]);
-        outfile<<endl<<endl;
+        cout<<"Polynomial "<<(j+1)<<" - Polynomial "<<(j+2)<<":"<<endl;
+        cout<<(polynomials[j]-polynomials[j+1]);
+        cout<<endl<<endl;
         //multiplication
-        outfile<<"Polynomial "<<(j+1)<<" * Polynomial "<<(j+2)<<":"<<endl;
-        outfile<<(polynomials[j]*polynomials[j+1]);
-        outfile<<endl<<endl;
+        cout<<"Polynomial "<<(j+1)<<" * Polynomial "<<(j+2)<<":"<<endl;
+        cout<<(polynomials[j]*polynomials[j+1]);
+        cout<<endl<<endl;
     }
-    outfile.close();
     return 0;
 }
 //Overloaded operator<<
@@ -87,8 +85,8 @@ int count_polynomials(string file){
     return count;
 }
 
-void print_header(ofstream& out){
-    out<<"Polynomial Arithmetic Redux provided by\n"
+void print_header(){
+    cout<<"Polynomial Arithmetic Redux provided by\n"
             "          .--.  ,---.  _______ ,-..-. .-. .---.\n"
             "|\\    /| / /\\ \\ | .-.\\|__   __||(||  \\| |/ .-. )\n"
             "|(\\  / |/ /__\\ \\| `-'/  )| |   (_)|   | || | |(_)\n"
